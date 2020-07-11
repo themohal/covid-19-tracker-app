@@ -4,10 +4,13 @@ import './index.css';
 import App from './App';
 import Covid from './covid';
 import Footer from './footer';
+import NavBar from './navbar';
+
 import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(
   <React.StrictMode>
+    <NavBar/>
     <App />
     <Covid/>
     <Footer/>
