@@ -3,6 +3,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 import Chart from './chart';
 import BarChart from './barchart';
+import StatsTables from './stats';
 let infected;
 let recovered;
 let tested;
@@ -117,6 +118,10 @@ deceased = data[0]['deceased'];
     </div>
     </div>
     </div>
+    </div>
+    <div className="container p-1">
+
+        <StatsTables></StatsTables>
     </div>
     </div>
 
