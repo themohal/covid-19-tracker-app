@@ -171,7 +171,9 @@ function Chart(){
  try{
   while(value[i]['new_cases']>=0){
     if(value[i]['new_cases']>=1){
+      if(new Date(value[i]['date']).getMonth()===new Date().getMonth()){
   dateCases.push(value[i]['date']);
+      }
     }
   ++i;
   }
@@ -179,8 +181,8 @@ function Chart(){
   console.log(error);
 }
 try{
-  while(value[j]['new_cases']>=0){
-    if(value[j]['new_cases']>=1){
+  while(value[j]['new_cases']>=0  ){
+    if(value[j]['new_cases']>=1 && new Date(value[j]['date']).getMonth()===new Date().getMonth()){
   DailyCases.push(value[j]['new_cases']);
     }
   ++j;
@@ -213,11 +215,13 @@ try{
 // }
   startDate = new Date(dateCases[0]);
    labels = [];
-  for (let i = 0; i < dateCases.length; i++) {
+  for (let i = 0; i <=dateCases.length; i++) {
      date = moment(startDate)
       .add(i, "days")
       .format("YYYY-MM-DD");
-    labels.push(date.toString());
+     
+      labels.push(date.toString());
+      
   }
   datas = [];
   for (let i = 0; i < DailyCases.length; i++) {
@@ -282,9 +286,7 @@ try{
         {
           color:'#4D5360',
           highlight:'#616774',
-          
-
-          label: "# of Cases",
+          label: "No. of Cases",
           data: datas,
           borderWidth: 3,
           fill: true,
@@ -311,14 +313,12 @@ try{
 //  }
                             
 return (
-  <div class="container">
-    <div class="row">
-      <div class="col-md-6">
+  
+      <div class="col-md-10">
   <Line data={chartData} options={options} width={400}
   height={450} />
   </div>
-  </div>
-  </div>
+  
   );
 }
 export default Chart;

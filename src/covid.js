@@ -1,13 +1,17 @@
 import React,{useEffect,useState} from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
+
 import Chart from './chart';
+import BarChart from './barchart';
 let infected;
 let recovered;
 let tested;
 let deceased;
 
+
+
 function Covid(){
-    
+
     let [data,setData] = useState([{}]);
     useEffect(()=>{
         async function getApiData(){
@@ -63,68 +67,59 @@ deceased = data[0]['deceased'];
 
   return( 
     <div className="container mt-2 ">
-       
         <div class="shadow p-1 mb-1 bg-white rounded">
-              
 
-        <div class="row text-center">
-        <div class="col-sm-3 ">
-            <div class="card-body ">
-                
-                <h5 className="card-title mt-3 text-warning text-justify"><div className="customFont">{infected} INFECTED</div></h5>
-            </div>
-        </div>
-        <div class="col-sm-3">
-            <div class="card-body ">
-  <h5 class="card-title mt-3 text-info text-justify" ><div className="customFont">{tested} TESTED</div></h5>
-            </div>
-        </div>
-        <div class="col-sm-3">
-            <div class="card-body ">
-                <h5 class="card-title mt-3 text-success text-justify"><div className="customFont">{recovered} RECOVERED</div></h5>
-            </div>
-        </div>
-   
-        <div class="col-sm-3">
-            <div class="card-body">
-                <h5 class="card-title mt-3 ml-2 text-danger text-justify"><div className="customFont">{deceased} DEATHS</div></h5>
-            </div>
-        </div>
-       </div>
+                <div class="card-deck">
+                    <div class="text-center card bg-warning text-white" >
+                        <div class="card-body"><div class="card-title h5">Cases</div>
+                        <span >{infected}</span>
+                        </div>
+                            </div>
+                <div class="text-center card bg-info text-white" >
+                    <div class="card-body"><div class="card-title h5">Tested</div>
+                    <p class="card-text"> <span >{tested}</span></p></div>
+                    </div>
+                <div class="text-center card bg-success text-white" >
+                    <div class="card-body"><div class="card-title h5">Recovered</div>
+                    <p class="card-text"><span>{recovered}</span></p>
+                        </div>
+                        </div>
+                    <div class="text-center card bg-danger text-white" >
+                    <div class="card-body"><div class="card-title h5">Deaths</div>
+                    <p class="card-text"><span>{deceased}</span></p>
+                        </div>
+                        </div>
+                        </div>
+              
+ 
+      
+      
     </div>
 {/* <img src="http://placehold.it/100x100/ "  />
     <div><h3>INFECTED</h3></div> */}
     
   
-            <div><Chart/></div>
+            {/* <div><BarChart/></div> */}
 
 
-
-
-<div class="container">
-    <div class="row">
-  
-      <div class="col-md-6">
-        <p>Covid Modules Stats</p>
-
-<div class="bingwidget" data-type="covid19_modules" data-modules='[{"_type": "stats", "location-id":"/Pakistan"}, {"_type": "stats", "location-id":"/China"}, {"_type": "stats", "location-id":"/India"}]'></div>
-
-      </div>
-  
-      <div class="col-md-6">
-      <p>Covid Modules Trends</p>
-<div class="bingwidget" data-type="covid19_modules" data-modules='[{"_type": "trends", "location-id":"/Pakistan"}]'></div>
-
-
-      </div>
-  
-    </div>
-    </div>
 
     
+<div class="container p-1">
+<div class="shadow mb-1 bg-white rounded">
 
-
+    <div class="row">
+    
+      <div class="col-lg">
+    <Chart/>
+    </div>    
+    <div class="col-lg">
+    <BarChart/>
     </div>
+    </div>
+    </div>
+    </div>
+    </div>
+
     
 );
 }
